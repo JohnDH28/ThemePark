@@ -7,16 +7,12 @@ public class Destination {
 	private int cost;
 	private boolean isOpen;
 	private ArrayList<Person> peopleAttending;
-	
-	public Destination() {
+	public Destination(int maxPoints,int  cost, boolean openStatus) {
 		// TODO Auto-generated constructor stub
-		
-		int type;
-		Destination(int maxPoints, int cost, boolean openStatus){
-			this.maxPoints = maxPoints;
-			this.cost = cost*ThemePark.priceCoef;
-			this.isOpen = openStatus;
-			this.peopleAttending = new ArrayList<Person>();
-		}
+		this.maxPoints = maxPoints;
+		this.cost = cost*ThemePark.getPriceCoef();
+		this.isOpen = openStatus;
+		this.peopleAttending = new ArrayList<Person>();
 	}
 }
+

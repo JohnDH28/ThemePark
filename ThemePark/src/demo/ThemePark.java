@@ -6,11 +6,11 @@ public class ThemePark {
 	private static int numOfDest;
 	private static int priceCoef;	
 	ArrayList<Person> peopleInPark = new ArrayList<Person>();
-	ArrayList<Destinations> allDestinations = new ArrayList<Destination>();
+	ArrayList<Destination> allDestinations = new ArrayList<Destination>();
 	//Array list of shops/vendors/rides (activities)
 	
 	public ThemePark(ArrayList<Person> people){
-		this.people = people;
+		peopleInPark = people;
 		numPeople = people.size();
 		//this.activity = activity;
 		//numRides = num of activities in activity with type ride
@@ -28,12 +28,15 @@ public class ThemePark {
 	 * ARIKS SHIT
 	 * 
 	 */
-	public static generateDestinations(){
-		double numOfDestinations = numOfPeople/10;
+	public static void generateNumberDestinations(){
+		double numOfDestinations = getNumPeople()/10;
 		int numOfLavatories = (int) (numOfDestinations*.2);
 		int numOfRides = (int)(numOfDestinations*.4);
 		int numOfKiosks = (int)(numOfDestinations*.2);
 		int numOfVendors = (int)(numOfDestinations*.2);
+	}
+	public static void generateDestinations(){
+		
 	}
 
 	/*

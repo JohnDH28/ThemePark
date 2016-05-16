@@ -5,5 +5,5 @@ public class Utilities {
 	private int numRides = ThemePark.getNumRides();
 	private int numShops = ThemePark.getNumShops();
 	private int totalPoints = Person.getTotalPoints();
-	private int pointsSpent = Shop.getPointsSpent();
+	private int pointsSpent = Ride.getPointsSpent();
 }

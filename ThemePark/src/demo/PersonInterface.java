@@ -1,7 +1,10 @@
+package demo;
+
 
 public interface PersonInterface {
 	/**
 	 * Lowers the Person p's points and Destinations dest's points
+	 * @return 
 	 */
-	doesActivity(Destination dest, Person p);
+	void doesActivity(Destination dest, Person p);
 }

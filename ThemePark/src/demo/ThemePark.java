@@ -12,11 +12,12 @@ public class ThemePark {
 	ArrayList<Person> peopleInPark = new ArrayList<Person>();;
 	ArrayList<Destination> allDestinations = new ArrayList<Destination>();
 	private ThemePark thePark;
+	private int personStartPoints;
 	//Array list of shops/vendors/rides (activities)
 
 
 
-	public ThemePark(int numPeople, int priceCoef){
+	public ThemePark(int numPeople, int priceCoef, int personStartPoints){
 		this.numPeople = numPeople;
 		this.priceCoef = priceCoef;
 		this.numOfDest = 80;
@@ -24,6 +25,8 @@ public class ThemePark {
 		this.numOfKiosks = 15;
 		this.numOfVendors = 15;
 		this.numOfRides=40;
+		this.personStartPoints = personStartPoints;
+		generateAllDestinations();
 		//this.activity = activity;
 		//numRides = num of activities in activity with type ride
 		//numShops = num of activities in activity with type shop

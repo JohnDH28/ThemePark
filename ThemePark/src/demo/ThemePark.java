@@ -9,14 +9,21 @@ public class ThemePark {
 	private int numOfRides;
 	private int numOfKiosks;
 	private int numOfVendors;
-	ArrayList<Person> peopleInPark;
+	ArrayList<Person> peopleInPark = new ArrayList<Person>();;
 	ArrayList<Destination> allDestinations = new ArrayList<Destination>();
+	private ThemePark thePark;
 	//Array list of shops/vendors/rides (activities)
-	
+
+
+
 	public ThemePark(int numPeople, int priceCoef){
-		peopleInPark = new ArrayList<Person>();
 		this.numPeople = numPeople;
 		this.priceCoef = priceCoef;
+		this.numOfDest = 80;
+		this.numOfLavatories =10;
+		this.numOfKiosks = 15;
+		this.numOfVendors = 15;
+		this.numOfRides=40;
 		//this.activity = activity;
 		//numRides = num of activities in activity with type ride
 		//numShops = num of activities in activity with type shop
@@ -33,7 +40,20 @@ public class ThemePark {
 	 * ARIKS SHIT
 	 * 
 	 */
-
+	public void generateAllDestinations(){
+		for(int i=0;i<numOfRides;i++){
+			allDestinations.add(new Ride(500, 10*priceCoef, true, 10, 10));
+		}
+		for(int i=0;i<numOfVendors;i++){
+			allDestinations.add(new Vendor(500, 5*priceCoef, true, 5, 5));
+		}
+		for(int i=0;i<numOfKiosks;i++){
+			allDestinations.add(new Kiosk(1000, 0, true, 100));
+		}
+		for(int i=0;i<numOfLavatories;i++){
+			allDestinations.add(new Lavatory(600, 0, true, 2));
+		}
+	}
 	public int getNumPeople() {
 		return numPeople;
 	}
@@ -86,6 +106,7 @@ public class ThemePark {
 		return numOfVendors;
 	}
 
+
 	public void setNumOfVendors(int numOfVendors) {
 		this.numOfVendors = numOfVendors;
 	}
@@ -97,4 +118,23 @@ public class ThemePark {
 	public void setPeopleInPark(ArrayList<Person> peopleInPark) {
 		this.peopleInPark = peopleInPark;
 	}	
+	
+	public ArrayList<Destination> getAllDestinations() {
+		return allDestinations;
+	}
+	
+	public ThemePark getThePark() {
+
+		return thePark;
+	}
+	
+	public void setAllDestinations(ArrayList<Destination> allDestinations) {
+		this.allDestinations = allDestinations;
+	}
+	
+	
+	
+	public void setThePark(ThemePark thePark) {
+		this.thePark = thePark;
+	}
 }

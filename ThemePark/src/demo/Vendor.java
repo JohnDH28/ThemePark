@@ -5,9 +5,9 @@ public class Vendor extends Destination{
 	private int defecationIncrementer;
 	//private int fatigueDecrementer;
 	private int fatigueIncrementer;
-	public Vendor(int maxPoints, int cost, boolean openStatus, int type, int defecateIcnt, int fatigueInct) {
+	public Vendor(int maxPoints, int cost, boolean openStatus, int defecateIcnt, int fatigueInct) {
 		// TODO Auto-generated constructor stub
-		super(maxPoints, cost, openStatus,type);
+		super(maxPoints, cost, openStatus);
 		this.defecationIncrementer = defecateIcnt;
 		this.fatigueIncrementer = fatigueInct;
 	}

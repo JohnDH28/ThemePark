@@ -7,4 +7,8 @@ public interface PersonInterface {
 	 * @return 
 	 */
 	void doesActivity(Destination dest);
+	int getExceitement();
+	int getFatigue();
+	int getDefecation();
+	int getHappiness();//Average the above 3
 }

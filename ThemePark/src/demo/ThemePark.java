@@ -13,6 +13,10 @@ public class ThemePark {
 	ArrayList<Destination> allDestinations = new ArrayList<Destination>();
 	private ThemePark thePark;
 	private int personStartPoints;
+	private int tExcit;
+	private int tFat;
+	private int tDef;
+	private int tHappy;
 	//Array list of shops/vendors/rides (activities)
 
 
@@ -55,6 +59,27 @@ public class ThemePark {
 		}
 		for(int i=0;i<numOfLavatories;i++){
 			allDestinations.add(new Lavatory(600, 0, true, 2));
+		}
+	}
+	public void collectData(){
+		for(Person p : thePark.peopleInPark){
+			tExcit += p.getExceitement();
+			tFat +=p.getFatigue();
+			tDef +=p.getDefecation();
+			tHappy +=p.getHappiness();//Calc Sum
+		}
+		tHappy = tHappy/peopleInPark.size();//Get Average;
+	}
+	
+	public void shutDown(){
+		int c = 0;// Some Constant?
+		if(tHappy< c){
+			if(tExcit<c){
+				//closeRandomDest();//closeWorstDest():
+			}
+			/*
+			 * Repleat upper if 
+			 */
 		}
 	}
 	public int getNumPeople() {

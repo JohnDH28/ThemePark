@@ -1,5 +1,6 @@
 package demo;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -22,10 +23,10 @@ public class ThemePark {
 	//Array list of shops/vendors/rides (activities)
 	
 	//index of the object in each of these lists is the also the number of times the parkTimer was called + 1
-	ArrayList<int[]> excitementHist = new ArrayList<int[]>();
-	ArrayList<int[]> fatigueHist = new ArrayList<int[]>();
-	ArrayList<int[]> defecationHist = new ArrayList<int[]>();
-	ArrayList<int[]> happyHist = new ArrayList<int[]>();
+	List<Integer> excitementHist = new ArrayList<>();
+	List<Integer> fatigueHist = new ArrayList<>();
+	List<Integer> defecationHist = new ArrayList<>();
+	List<Integer> happyHist = new ArrayList<>();
 	ArrayList<int[]> destinationHist = new ArrayList<int[]>(); //index of the int = index of the destination in allDestinations
 
 
@@ -43,6 +44,7 @@ public class ThemePark {
 		//this.activity = activity;
 		//numRides = num of activities in activity with type ride
 		//numShops = num of activities in activity with type shop
+		timer1.scheduleAtFixedRate(parkTimer, 5000, 5000);
 	}
 	/*
 	 *JOHNS SHIT 
@@ -52,19 +54,18 @@ public class ThemePark {
 	Timer timer1 = new Timer();
 	TimerTask parkTimer = new TimerTask(){
 		public void run() {
-			excitmentHist.add(this.tExcit);
-			fatigueHist.add(this.tFat);
-			defecationHist.add(this.tDef);
-			happyHist.add(this.tHappy);
+			excitementHist.add(gettExcit());
+			fatigueHist.add(gettFat());
+			defecationHist.add(gettDef());
+			happyHist.add(gettHappy());
 			int[] temp = new int[allDestinations.size()];
-			for(i = 0; i < allDestinations.size(); i++){
+			for(int i = 0; i < allDestinations.size(); i++){
 				temp[i] = allDestinations.get(i).getMaxPoints();
 			}
 			destinationHist.add(temp);
 		}
 		
 	};
-	timer1.scheduleAtFixedRate(parkTimer, 120000, 120000);
 	
 	/*
 	 * 
@@ -184,7 +185,21 @@ public class ThemePark {
 		this.allDestinations = allDestinations;
 	}
 	
+	public int gettExcit() {
+		return tExcit;
+	}
 	
+	public int gettFat() {
+		return tFat;
+	}
+	
+	public int gettDef() {
+		return tDef;
+	}
+	
+	public int gettHappy() {
+		return tHappy;
+	}
 	
 	public void setThePark(ThemePark thePark) {
 		this.thePark = thePark;

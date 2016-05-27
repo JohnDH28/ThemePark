@@ -20,7 +20,7 @@ public class ThemePark {
 	private int tFat;
 	private int tDef;
 	private int tHappy;
-	private int timerCount;
+	private int timerCount = 0;
 	//index of the object in each of these lists is the also the number of times the parkTimer was called + 1
 	List<Integer> excitementHist = new ArrayList<>();
 	List<Integer> fatigueHist = new ArrayList<>();

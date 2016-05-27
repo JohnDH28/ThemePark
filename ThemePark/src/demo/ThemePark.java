@@ -1,5 +1,7 @@
 package demo;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class ThemePark {
 	private int numPeople;
@@ -9,7 +11,7 @@ public class ThemePark {
 	private int numOfRides;
 	private int numOfKiosks;
 	private int numOfVendors;
-	ArrayList<Person> peopleInPark = new ArrayList<Person>();;
+	ArrayList<Person> peopleInPark = new ArrayList<Person>();
 	ArrayList<Destination> allDestinations = new ArrayList<Destination>();
 	private ThemePark thePark;
 	private int personStartPoints;
@@ -18,6 +20,13 @@ public class ThemePark {
 	private int tDef;
 	private int tHappy;
 	//Array list of shops/vendors/rides (activities)
+	
+	//index of the object in each of these lists is the also the number of times the parkTimer was called + 1
+	ArrayList<int[]> excitementHist = new ArrayList<int[]>();
+	ArrayList<int[]> fatigueHist = new ArrayList<int[]>();
+	ArrayList<int[]> defecationHist = new ArrayList<int[]>();
+	ArrayList<int[]> happyHist = new ArrayList<int[]>();
+	ArrayList<int[]> destinationHist = new ArrayList<int[]>(); //index of the int = index of the destination in allDestinations
 
 
 
@@ -40,7 +49,22 @@ public class ThemePark {
 	 *
 	 */
 	
-	
+	Timer timer1 = new Timer();
+	TimerTask parkTimer = new TimerTask(){
+		public void run() {
+			excitmentHist.add(this.tExcit);
+			fatigueHist.add(this.tFat);
+			defecationHist.add(this.tDef);
+			happyHist.add(this.tHappy);
+			int[] temp = new int[allDestinations.size()];
+			for(i = 0; i < allDestinations.size(); i++){
+				temp[i] = allDestinations.get(i).getMaxPoints();
+			}
+			destinationHist.add(temp);
+		}
+		
+	};
+	timer1.scheduleAtFixedRate(parkTimer, 120000, 120000);
 	
 	/*
 	 * 

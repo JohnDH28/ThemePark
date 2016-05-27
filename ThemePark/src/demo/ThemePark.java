@@ -20,8 +20,7 @@ public class ThemePark {
 	private int tFat;
 	private int tDef;
 	private int tHappy;
-	//Array list of shops/vendors/rides (activities)
-	
+	private int timerCount;
 	//index of the object in each of these lists is the also the number of times the parkTimer was called + 1
 	List<Integer> excitementHist = new ArrayList<>();
 	List<Integer> fatigueHist = new ArrayList<>();
@@ -54,6 +53,7 @@ public class ThemePark {
 	Timer timer1 = new Timer();
 	TimerTask parkTimer = new TimerTask(){
 		public void run() {
+			timerCount++;
 			excitementHist.add(gettExcit());
 			fatigueHist.add(gettFat());
 			defecationHist.add(gettDef());

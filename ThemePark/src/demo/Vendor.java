@@ -5,6 +5,7 @@ public class Vendor extends Destination{
 	private int defecationIncrementer;
 	//private int fatigueDecrementer;
 	private int fatigueIncrementer;
+	private int hungerDecrementer;
 	private int type = 2;
 	public Vendor(int maxPoints, int cost, boolean openStatus, int defecateIcnt, int fatigueInct) {
 		// TODO Auto-generated constructor stub
@@ -17,6 +18,9 @@ public class Vendor extends Destination{
 	}
 	public int getFatigueIncrementer() {
 		return fatigueIncrementer;
+	}
+	public int getHunterDecrementer() {
+		return hungerDecrementer;
 	}
 
 }

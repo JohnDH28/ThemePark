@@ -9,6 +9,7 @@ public class Lavatory extends Destination {
 		// TODO Auto-generated constructor stub
 		super(maxPoints, cost, openStatus);
 		defecationDecrementor = defecateDect;
+		hungerIncrementor = defecateDect;
 	}
 	public int getDefecationDecrementor() {
 		return defecationDecrementor;

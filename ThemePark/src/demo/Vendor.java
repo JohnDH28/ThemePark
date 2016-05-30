@@ -11,6 +11,7 @@ public class Vendor extends Destination{
 		// TODO Auto-generated constructor stub
 		super(maxPoints, cost, openStatus);
 		this.defecationIncrementer = defecateIcnt;
+		this.hungerDecrementer = defecateIcnt;
 		this.fatigueIncrementer = fatigueInct;
 	}
 	public int getDefecationIncrementer() {

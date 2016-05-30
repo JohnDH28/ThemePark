@@ -1,14 +1,11 @@
 package demo;
 
-
 public interface PersonInterface {
-	/**
-	 * Lowers the Person p's points and Destinations dest's points
-	 * @return 
-	 */
+	int chooseActivity();
 	void doesActivity(Destination dest);
 	int getExceitement();
 	int getFatigue();
 	int getDefecation();
+	int getHunger();
 	int getHappiness();//Average the above 3
 }

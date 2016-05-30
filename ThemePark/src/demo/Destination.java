@@ -7,6 +7,7 @@ public class Destination {
 	private int cost;
 	private boolean isOpen;
 	private ArrayList<Person> peopleAttending;
+	private int efficiency;
 	//private int type;
 	
 	public Destination(int maxPoints,int  cost, boolean openStatus) {
@@ -14,6 +15,7 @@ public class Destination {
 		this.cost = cost;
 		this.isOpen = openStatus;
 		this.peopleAttending = new ArrayList<Person>();
+		this.efficiency = 0;
 		//this.type= type;
 	}
 
@@ -47,6 +49,16 @@ public class Destination {
 
 	public void setPeopleAttending(ArrayList<Person> peopleAttending) {
 		this.peopleAttending = peopleAttending;
+	}
+
+	public void setEffic(int i) {
+		// TODO Auto-generated method stub
+		this.efficiency = i;
+	}
+
+	public int getEffic() {
+		// TODO Auto-generated method stub
+		return efficiency;
 	}
 
 }

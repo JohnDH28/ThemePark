@@ -63,6 +63,8 @@ public class ThemePark {
 				temp[i] = allDestinations.get(i).getMaxPoints();
 			}
 			destinationHist.add(temp);
+			determineEffic(destinationHist.get(timerCount), 5);
+			shutDown();
 		}
 		
 	};
@@ -87,25 +89,82 @@ public class ThemePark {
 		}
 	}
 	public void collectData(){
+		tExcit =0;
+		tFat =0;
+		tDef = 0;
+		tHappy = 0;
 		for(Person p : thePark.peopleInPark){
 			tExcit += p.getExceitement();
 			tFat +=p.getFatigue();
 			tDef +=p.getDefecation();
 			tHappy +=p.getHappiness();//Calc Sum
 		}
-		tHappy = tHappy/peopleInPark.size();//Get Average;
+		//tHappy = tHappy/peopleInPark.size();//Get Average;
 	}
-	
+	public void determineEffic(int[] arr, int time){
+		for(int i=0;i<arr.length;i++){
+			  Destination currDest = allDestinations.get(i);
+			  currDest.setEffic(arr[i]/time);
+			  allDestinations.set(i,currDest);
+			 
+		}
+	}
 	public void shutDown(){
 		int c = 0;// Some Constant?
-		if(tHappy< c){
-			if(tExcit<c){
+		int x= peopleInPark.size();
+		if(tHappy< x/4){
+			if(tExcit<x/4){
 				//closeRandomDest();//closeWorstDest():
+				killDestination("ride");
 			}
+			if(tFat<x/4){
+				
+			}
+			if(tDef<x/4){
+				
+			}
+			
 			/*
 			 * Repleat upper if 
 			 */
 		}
+	}
+	public void killDestination(String str){
+		ArrayList tmpList = new ArrayList<Destination>();
+		if(str.equals("ride")){
+			for(Destination d: allDestinations){
+				if(d instanceof Ride){
+					tmpList.add(d);
+				}
+			}
+		}
+		if(str.equals("vendor")){
+			for(Destination d: allDestinations){
+				if(d instanceof Vendor){
+					tmpList.add(d);
+				}
+			}
+		}
+		if(str.equals("br")){
+			for(Destination d: allDestinations){
+				if(d instanceof Lavatory){
+					tmpList.add(d);
+				}
+			}
+		}
+		int[] allEffic = new int[allDestinations.size()];
+		for(int x=0;x<allEffic.length;x++){
+			allEffic[x] = allDestinations.get(x).getEffic();
+		}
+		int low = allEffic[0];
+		int lowIndx = 0;
+		for(int i=0;i<allEffic.length;i++){
+			if(allEffic[i]<low){
+				low=allEffic[i];
+				lowIndx = i;
+			}
+		}
+		allDestinations.remove(lowIndx);
 	}
 	public int getNumPeople() {
 		return numPeople;

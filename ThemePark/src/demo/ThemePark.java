@@ -65,6 +65,10 @@ public class ThemePark {
 			destinationHist.add(temp);
 			determineEffic(destinationHist.get(timerCount), 5);
 			shutDown();
+			System.out.println("////////////////////////////////////////");
+			System.out.println("Total Excitment: "+ tExcit +"/ Total Fatigue: " +tFat +"/Total Defecation: " +
+			tDef +"/ Total Happiness" +tHappy +"/ Number of Open Destinations: " +allDestinations.size() +
+			"/ Number of People: "+ peopleInPark.size());
 		}
 		
 	};
@@ -104,7 +108,7 @@ public class ThemePark {
 	public void determineEffic(int[] arr, int time){
 		for(int i=0;i<arr.length;i++){
 			  Destination currDest = allDestinations.get(i);
-			  currDest.setEffic(arr[i]/time);
+			  currDest.setEffic((allDestinations.get(i).getMaxPoints()-arr[i])/time);
 			  allDestinations.set(i,currDest);
 			 
 		}
@@ -152,11 +156,11 @@ public class ThemePark {
 				}
 			}
 		}
-		int[] allEffic = new int[allDestinations.size()];
+		double[] allEffic = new double[allDestinations.size()];
 		for(int x=0;x<allEffic.length;x++){
 			allEffic[x] = allDestinations.get(x).getEffic();
 		}
-		int low = allEffic[0];
+		double low = allEffic[0];
 		int lowIndx = 0;
 		for(int i=0;i<allEffic.length;i++){
 			if(allEffic[i]<low){

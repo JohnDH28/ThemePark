@@ -7,7 +7,7 @@ public class Destination {
 	private int cost;
 	private boolean isOpen;
 	private ArrayList<Person> peopleAttending;
-	private int efficiency;
+	private double efficiency;
 	//private int type;
 	
 	public Destination(int maxPoints,int  cost, boolean openStatus) {
@@ -56,7 +56,7 @@ public class Destination {
 		this.efficiency = i;
 	}
 
-	public int getEffic() {
+	public double getEffic() {
 		// TODO Auto-generated method stub
 		return efficiency;
 	}

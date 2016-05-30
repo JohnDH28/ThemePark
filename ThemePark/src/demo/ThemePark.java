@@ -15,7 +15,7 @@ public class ThemePark {
 	ArrayList<Person> peopleInPark = new ArrayList<Person>();
 	ArrayList<Destination> allDestinations = new ArrayList<Destination>();
 	private ThemePark thePark;
-	private int personStartPoints;
+	private static int personStartPoints;
 	private int tExcit;
 	private int tFat;
 	private int tDef;
@@ -38,7 +38,7 @@ public class ThemePark {
 		this.numOfKiosks = 15;
 		this.numOfVendors = 15;
 		this.numOfRides=40;
-		this.personStartPoints = personStartPoints;
+		ThemePark.personStartPoints = personStartPoints;
 		generateAllDestinations();
 		//this.activity = activity;
 		//numRides = num of activities in activity with type ride
@@ -78,14 +78,14 @@ public class ThemePark {
 		for(int i=0;i<numOfRides;i++){
 			allDestinations.add(new Ride(500, 10*priceCoef, true, 10, 10));
 		}
+		for(int i=0;i<numOfLavatories;i++){
+			allDestinations.add(new Lavatory(600, 0, true, 2));
+		}
 		for(int i=0;i<numOfVendors;i++){
 			allDestinations.add(new Vendor(500, 5*priceCoef, true, 5, 5));
 		}
 		for(int i=0;i<numOfKiosks;i++){
 			allDestinations.add(new Kiosk(1000, 0, true, 100));
-		}
-		for(int i=0;i<numOfLavatories;i++){
-			allDestinations.add(new Lavatory(600, 0, true, 2));
 		}
 	}
 	public void collectData(){
@@ -262,5 +262,8 @@ public class ThemePark {
 	
 	public void setThePark(ThemePark thePark) {
 		this.thePark = thePark;
+	}
+	public static int getPersonStartPoints() {
+		return personStartPoints;
 	}
 }

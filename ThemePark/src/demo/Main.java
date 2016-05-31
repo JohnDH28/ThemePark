@@ -18,7 +18,7 @@ public class Main {
 //			System.out.println(thePark.getAllDestinations().get(x).getMaxPoints());
 //			x++;
 //		}
-		System.out.println("Input the number of people, the price coefficent and the amount of points +"
+		System.out.println("Input the number of people, the price coefficent and the amount of points "
 				+ "guests will start with seperated by a single space");
 		String iString = s.nextLine();
 		System.out.println(iString);
@@ -32,6 +32,7 @@ public class Main {
 		System.out.println(Arrays.toString(inputs));
 		ThemePark thePark = new ThemePark(inputs[0],inputs[1], inputs[2]);
 		thePark.setThePark(thePark);
+		thePark.collectData();
 	}
 
 }

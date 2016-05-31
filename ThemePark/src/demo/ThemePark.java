@@ -78,6 +78,7 @@ public class ThemePark {
 			determineEffic(destinationHist.get(timerCount), 5);
 			shutDown();
 			System.out.println("////////////////////////////////////////");
+			collectData();
 			System.out.println("Total Excitment: "+ tExcit +"/ Total Fatigue: " +tFat +"/Total Defecation: " +
 			tDef + "/Total Hunger: " + tHun+"/ Total Happiness" +tHappy +"/ Number of Open Destinations: " +allDestinations.size() +
 			"/ Number of People: "+ peopleInPark.size());

@@ -15,7 +15,7 @@ public class Person implements PersonInterface {
     private Destination currLocation;
     private static Random rnd = new Random();
     
-    public Person(ThemePark park, int height, boolean isAdult, int excitement, int needToDefecate, int fatigue, int happiness, Destination currLocation){
+    public Person(ThemePark park){
         this.park = park;
     	this.points = ThemePark.getPersonStartPoints();
         this.height = (int)(Math.random() * 37 + 42);

@@ -19,12 +19,14 @@ public class ThemePark {
 	private int tExcit;
 	private int tFat;
 	private int tDef;
+	private int tHun;
 	private int tHappy;
 	private int timerCount = -1;
 	//index of the object in each of these lists is the also the number of times the parkTimer was called + 1
 	List<Integer> excitementHist = new ArrayList<>();
 	List<Integer> fatigueHist = new ArrayList<>();
 	List<Integer> defecationHist = new ArrayList<>();
+	List<Integer> hungerHist = new ArrayList<>();
 	List<Integer> happyHist = new ArrayList<>();
 	ArrayList<int[]> destinationHist = new ArrayList<int[]>(); //index of the int = index of the destination in allDestinations
 
@@ -39,24 +41,34 @@ public class ThemePark {
 		this.numOfVendors = 15;
 		this.numOfRides=40;
 		ThemePark.personStartPoints = personStartPoints;
+		generatePeople();
 		generateAllDestinations();
 		//this.activity = activity;
 		//numRides = num of activities in activity with type ride
 		//numShops = num of activities in activity with type shop
 		timer1.scheduleAtFixedRate(parkTimer, 5000, 5000);
 	}
+	
 	/*
-	 *JOHNS SHIT 
+	 *JOHN'S CODE
 	 *
 	 */
+	
+	public void generatePeople() {
+		for(int p = 1; p < numPeople; p++){
+			peopleInPark.add(new Person(this));
+		}
+	}
 	
 	Timer timer1 = new Timer();
 	TimerTask parkTimer = new TimerTask(){
 		public void run() {
+			//Get stats
 			timerCount++;
 			excitementHist.add(gettExcit());
 			fatigueHist.add(gettFat());
 			defecationHist.add(gettDef());
+			hungerHist.add(gettHun());
 			happyHist.add(gettHappy());
 			int[] temp = new int[allDestinations.size()];
 			for(int i = 0; i < allDestinations.size(); i++){
@@ -69,13 +81,17 @@ public class ThemePark {
 			System.out.println("Total Excitment: "+ tExcit +"/ Total Fatigue: " +tFat +"/Total Defecation: " +
 			tDef +"/ Total Happiness" +tHappy +"/ Number of Open Destinations: " +allDestinations.size() +
 			"/ Number of People: "+ peopleInPark.size());
-		}
-		
+			
+			//People change destinations (AI)
+			for(Person p: thePark.peopleInPark){
+				p.doesActivity(p.chooseActivity());
+			}
+		}		
 	};
 	
 	/*
 	 * 
-	 * ARIKS SHIT
+	 * ARIK'S CODE
 	 * 
 	 */
 	public void generateAllDestinations(){
@@ -106,6 +122,7 @@ public class ThemePark {
 			tExcit += p.getExceitement();
 			tFat +=p.getFatigue();
 			tDef +=p.getDefecation();
+			tHun +=p.getHunger();
 			tHappy +=p.getHappiness();//Calc Sum
 		}
 		//tHappy = tHappy/peopleInPark.size();//Get Average;
@@ -263,6 +280,10 @@ public class ThemePark {
 	
 	public int gettDef() {
 		return tDef;
+	}
+	
+	public int gettHun() {
+		return tHun;
 	}
 	
 	public int gettHappy() {

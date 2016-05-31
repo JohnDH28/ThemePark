@@ -150,6 +150,8 @@ public class ThemePark {
 			}
 			if(tDef<x/4){
 				killDestination("br");
+				// are they here?
+				
 			}
 			
 			/*

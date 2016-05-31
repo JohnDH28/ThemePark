@@ -86,7 +86,7 @@ public class ThemePark {
 			for(Person p: thePark.peopleInPark){
 				places += p.getCurrLocation() + " ";
 			}
-			System.out.println(places);
+			//System.out.println(places);
 			
 			//People change destinations (AI)
 			for(Person p: thePark.peopleInPark){
@@ -146,13 +146,13 @@ public class ThemePark {
 	public void shutDown(){
 		int c = 0;// Some Constant?
 		int x= peopleInPark.size();
-		x+=200;
+		//x+=200;
 		if(tHappy< x){
 			if(tExcit<x){
 				//closeRandomDest();//closeWorstDest():
 				killDestination("ride");
 			}
-			if(tFat>2*x-400){
+			if(tFat<x){
 				killDestination("vendor");
 			}
 			if(tDef<x){
@@ -167,7 +167,7 @@ public class ThemePark {
 		}
 	}
 	public void killDestination(String str){
-		ArrayList tmpList = new ArrayList<Destination>();
+		ArrayList<Destination> tmpList = new ArrayList<Destination>();
 		if(str.equals("ride")){
 			for(Destination d: allDestinations){
 				if(d instanceof Ride){
@@ -189,19 +189,32 @@ public class ThemePark {
 				}
 			}
 		}
-		double[] allEffic = new double[allDestinations.size()];
-		for(int x=0;x<allEffic.length;x++){
-			allEffic[x] = allDestinations.get(x).getEfficiency();
-		}
-		double low = allEffic[0];
-		int lowIndx = 0;
-		for(int i=0;i<allEffic.length;i++){
-			if(allEffic[i]<low){
-				low=allEffic[i];
+		System.out.println("KILLLLLLLLL");
+//		double[] allEffic = new double[tmpList.size()];
+//		for(int x=0;x<tmpList.size();x++){
+//			allEffic[x] = (tmpList.get(x)).getEfficiency();
+//		}
+//		double low = allEffic[0];
+//		int lowIndx = 0;
+//		for(int i=0;i<allEffic.length;i++){
+//			if(allEffic[i]<low){
+//				low=allEffic[i];
+//				lowIndx = i;
+//			}
+//		}
+		allDestinations.remove(returnLow(tmpList));
+
+	}
+	public Destination returnLow(ArrayList<Destination> arr){
+		double low=arr.get(0).getEfficiency();
+		int lowIndx=0;
+		for(int i =0; i<arr.size();i++){
+			if (arr.get(i).getEfficiency()<low){
+				low = arr.get(i).getEfficiency();
 				lowIndx = i;
 			}
 		}
-		allDestinations.remove(lowIndx);
+		return arr.get(lowIndx);
 	}
 	public int getNumPeople() {
 		return numPeople;

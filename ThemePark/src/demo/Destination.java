@@ -8,14 +8,16 @@ public class Destination {
 	private boolean isOpen;
 	private ArrayList<Person> peopleAttending;
 	private double efficiency;
+	private int[] incrementors;
 	//private int type;
 	
-	public Destination(int maxPoints,int  cost, boolean openStatus) {
+	public Destination(int maxPoints,int  cost, boolean openStatus, int[] inArr) {
 		this.maxPoints = maxPoints;
 		this.cost = cost;
 		this.isOpen = openStatus;
 		this.peopleAttending = new ArrayList<Person>();
 		this.efficiency = 0;
+		this.incrementors = inArr;
 		//this.type= type;
 	}
 

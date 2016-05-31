@@ -5,10 +5,9 @@ public class Ride extends Destination{
 	private int fatigueIncrementor;
 	private int excitementIncrementor;
 	private int type = 0;
-	public Ride(int maxPoints, int cost, boolean openStatus, int fatInct, int extInct) {
-		super(maxPoints, cost, openStatus);
-		this.excitementIncrementor = extInct;
-		this.fatigueIncrementor = fatInct;
+	public Ride(int maxPoints, int cost, boolean openStatus,int[] arr ) {
+		super(maxPoints, cost, openStatus, arr);
+
 		// TODO Auto-generated constructor stub
 	}
 	public int getFatigueIncrementor() {

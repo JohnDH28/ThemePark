@@ -79,17 +79,22 @@ public class ThemePark {
 	 * 
 	 */
 	public void generateAllDestinations(){
+		//EFDH
 		for(int i=0;i<numOfRides;i++){
-			allDestinations.add(new Ride(500, 10*priceCoef, true, 10, 10));
+			int[] x = { 10,10,0,2};
+			allDestinations.add(new Ride(500, 10*priceCoef, true, x));
 		}
 		for(int i=0;i<numOfLavatories;i++){
-			allDestinations.add(new Lavatory(600, 0, true, 2));
+			int[] x= {0,0,2,2};
+			allDestinations.add(new Lavatory(600, 0, true, x));
 		}
 		for(int i=0;i<numOfVendors;i++){
-			allDestinations.add(new Vendor(500, 5*priceCoef, true, 5, 5));
+			int[] x= {0,5,5,5};
+			allDestinations.add(new Vendor(500, 5*priceCoef, true, x));
 		}
 		for(int i=0;i<numOfKiosks;i++){
-			allDestinations.add(new Kiosk(1000, 0, true, 100));
+			int[] x = {};
+			allDestinations.add(new Kiosk(1000, 0, true, 100,x));
 		}
 	}
 	public void collectData(){

@@ -79,7 +79,7 @@ public class ThemePark {
 			shutDown();
 			System.out.println("////////////////////////////////////////");
 			System.out.println("Total Excitment: "+ tExcit +"/ Total Fatigue: " +tFat +"/Total Defecation: " +
-			tDef +"/ Total Happiness" +tHappy +"/ Number of Open Destinations: " +allDestinations.size() +
+			tDef "/Total Hunger: " + tHun+"/ Total Happiness" +tHappy +"/ Number of Open Destinations: " +allDestinations.size() +
 			"/ Number of People: "+ peopleInPark.size());
 			
 			//People change destinations (AI)
@@ -120,7 +120,7 @@ public class ThemePark {
 		tFat =0;
 		tDef = 0;
 		tHappy = 0;
-		for(Person p : thePark.peopleInPark){
+		for(Person p : peopleInPark){
 			tExcit += p.getExceitement();
 			tFat +=p.getFatigue();
 			tDef +=p.getDefecation();

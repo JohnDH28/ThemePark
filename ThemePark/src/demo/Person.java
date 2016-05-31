@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Person implements PersonInterface {
-	private ThemePark park;
+	private ThemePark park; //test
     private int points;
     private int height;
     private boolean isAdult;

@@ -9,6 +9,8 @@ public class Destination {
 	private ArrayList<Person> peopleAttending;
 	private double efficiency;
 	private int[] incrementors;
+	//EFDH
+	//Excitiment fatigue defecation hunger
 	//private int type;
 	
 	public Destination(int maxPoints,int  cost, boolean openStatus, int[] inArr) {

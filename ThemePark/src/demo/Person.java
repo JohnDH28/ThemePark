@@ -46,18 +46,30 @@ public class Person implements PersonInterface {
         ArrayList<Person> peopleAtDest = park.getAllDestinations().get(dest).getPeopleAttending();
         peopleAtDest.add(this);
         park.getAllDestinations().get(dest).setPeopleAttending(peopleAtDest);
+        int[] incrementor = park.getAllDestinations().get(dest).arrayOfIcrementors();
         if(dest == 0){
-        	
+        	excitement += incrementor[0];
+        	fatigue += incrementor[1];
+        	needToDefecate += incrementor[2];  
+        	hunger += incrementor[3];  
         }
         if(dest == 1){
-        	
+        	excitement += incrementor[0];
+        	fatigue += incrementor[1];
+        	needToDefecate -= incrementor[2];  
+        	hunger -= incrementor[3];  
         }
         if(dest == 2){
-        	needToDefecate += park.getAllDestinations().get(dest).getDefecationIncrementer();
-        	
+        	excitement += incrementor[0];
+        	fatigue += incrementor[1];
+        	needToDefecate += incrementor[2];    
+        	hunger -= incrementor[3];  
         }
         if(dest == 3){
-        	
+        	excitement += incrementor[0];
+        	fatigue += incrementor[1];
+        	needToDefecate -= incrementor[2];  
+        	hunger += incrementor[3];  
         }
     }
     

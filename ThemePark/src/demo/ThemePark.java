@@ -141,15 +141,16 @@ public class ThemePark {
 	public void shutDown(){
 		int c = 0;// Some Constant?
 		int x= peopleInPark.size();
-		if(tHappy< x/4){
-			if(tExcit<x/4){
+		x+=200;
+		if(tHappy< x){
+			if(tExcit<x){
 				//closeRandomDest();//closeWorstDest():
 				killDestination("ride");
 			}
-			if(tFat<x/4){
+			if(tFat>2*x-400){
 				killDestination("vendor");
 			}
-			if(tDef<x/4){
+			if(tDef<x){
 				killDestination("br");
 				// are they here?
 				

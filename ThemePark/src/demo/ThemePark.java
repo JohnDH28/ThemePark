@@ -174,6 +174,7 @@ public class ThemePark {
 					tmpList.add(d);
 				}
 			}
+			//sadwa
 		}
 		if(str.equals("vendor")){
 			for(Destination d: allDestinations){

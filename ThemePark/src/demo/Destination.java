@@ -24,7 +24,9 @@ public class Destination {
 	public int getMaxPoints() {
 		return maxPoints;
 	}
-
+	public int[] getIncrementors(){
+		return incrementors;
+	}
 	public void setMaxPoints(int maxPoints) {
 		this.maxPoints = maxPoints;
 	}

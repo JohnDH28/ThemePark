@@ -12,8 +12,9 @@ public class Person implements PersonInterface {
     private int fatigue;
     private int hunger;
     private int happiness;
-    private Destination currLocation;
-    private static Random rnd = new Random();
+    private int currLocation;
+
+	private static Random rnd = new Random();
     
     public Person(ThemePark park){
         this.park = park;
@@ -22,8 +23,8 @@ public class Person implements PersonInterface {
         this.isAdult = getRndBool();
         this.excitement = (int)(Math.random() * 4 + 2);
         this.needToDefecate = (int)(Math.random() * 6 + 2);
-        this.fatigue = (int)(Math.random() * 4);
-        this.hunger = (int)(Math.random() * 6 + 2);
+        this.fatigue = 5;
+        this.hunger = 5;
         this.happiness = (int)((fatigue + needToDefecate + excitement + hunger) / 4);
         this.currLocation = currLocation;
     }
@@ -41,43 +42,64 @@ public class Person implements PersonInterface {
     
     public void doesActivity(int destIndex){
     	int dest = 0;
+    	int type = 0;
     	for(int i = 0; i < park.allDestinations.size(); i++){
-    		if(park.allDestinations.get(i) instanceof Ride && destIndex == 0) dest = i;
-    		if(park.allDestinations.get(i) instanceof Lavatory && destIndex == 1) dest = i;
-    		if(park.allDestinations.get(i) instanceof Vendor && destIndex == 2) dest = i;
-    		if(park.allDestinations.get(i) instanceof Kiosk && destIndex == 3) dest = i;
+    		if(park.allDestinations.get(i) instanceof Ride && destIndex == 0){
+    			dest = i; 
+    			type = 0;
+    		}
+    		if(park.allDestinations.get(i) instanceof Lavatory && destIndex == 1){
+    			dest = i;
+    			type = 1;
+    		}
+    		if(park.allDestinations.get(i) instanceof Vendor && destIndex == 2){
+    			dest = i;
+    			type = 2;
+    		}
+    		if(park.allDestinations.get(i) instanceof Kiosk && destIndex == 3){
+    			dest = i;
+    			type = 3;
+    		}
     	}
-        this.currLocation = park.getAllDestinations().get(dest);
+        this.currLocation = dest;
         park.getAllDestinations().get(dest).setMaxPoints(park.getAllDestinations().get(dest).getMaxPoints() + park.getAllDestinations().get(dest).getCost());
         this.points -= park.getAllDestinations().get(dest).getCost();
         ArrayList<Person> peopleAtDest = park.getAllDestinations().get(dest).getPeopleAttending();
         peopleAtDest.add(this);
         park.getAllDestinations().get(dest).setPeopleAttending(peopleAtDest);
         int[] incrementor = park.getAllDestinations().get(dest).arrayOfIcrementors();
-        if(dest == 0){
+        if(type == 0){
         	excitement += incrementor[0];
         	fatigue += incrementor[1];
         	needToDefecate += incrementor[2];  
         	hunger += incrementor[3];  
         }
-        if(dest == 1){
-        	excitement += incrementor[0];
-        	fatigue += incrementor[1];
-        	needToDefecate -= incrementor[2];  
-        	hunger -= incrementor[3];  
-        }
-        if(dest == 2){
-        	excitement += incrementor[0];
-        	fatigue += incrementor[1];
-        	needToDefecate += incrementor[2];    
-        	hunger -= incrementor[3];  
-        }
-        if(dest == 3){
+        if(type == 1){
         	excitement += incrementor[0];
         	fatigue += incrementor[1];
         	needToDefecate -= incrementor[2];  
         	hunger += incrementor[3];  
         }
+        if(type == 2){
+        	excitement += incrementor[0];
+        	fatigue += incrementor[1];
+        	needToDefecate += incrementor[2];    
+        	hunger += incrementor[3];  
+        }
+        if(type == 3){
+        	excitement += incrementor[0];
+        	fatigue += incrementor[1];
+        	needToDefecate -= incrementor[2];  
+        	hunger += incrementor[3];  
+        }
+        if(excitement > 10) excitement = 10;
+        if(excitement < 0) excitement = 0;
+        if(fatigue > 10) fatigue = 10;
+        if(fatigue < 0) fatigue = 0;
+        if(needToDefecate > 10) needToDefecate = 10;
+        if(needToDefecate < 0) needToDefecate = 0;
+        if(hunger > 10) hunger = 10;
+        if(hunger < 0) hunger = 0;
     }
     
     public static boolean getRndBool(){
@@ -118,5 +140,9 @@ public class Person implements PersonInterface {
     
 	public int getHunger() {
 		return hunger;
+	}
+	
+	public int getCurrLocation() {
+		return currLocation;
 	}
 }

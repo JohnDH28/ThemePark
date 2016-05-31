@@ -82,6 +82,11 @@ public class ThemePark {
 			System.out.println("Total Excitment: "+ tExcit +"/ Total Fatigue: " +tFat +"/Total Defecation: " +
 			tDef + "/Total Hunger: " + tHun+"/ Total Happiness" +tHappy +"/ Number of Open Destinations: " +allDestinations.size() +
 			"/ Number of People: "+ peopleInPark.size());
+			String places = "";
+			for(Person p: thePark.peopleInPark){
+				places += p.getCurrLocation() + " ";
+			}
+			System.out.println(places);
 			
 			//People change destinations (AI)
 			for(Person p: thePark.peopleInPark){

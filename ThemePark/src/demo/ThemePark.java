@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.TimerTask;
 import java.util.Timer;
 
-public class ThemePark {
+public class ThemePark implements ThemeParkInterface{
 	private int numPeople;
 	private int numOfDest;
 	private int priceCoef;	

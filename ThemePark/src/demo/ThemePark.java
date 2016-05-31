@@ -84,7 +84,9 @@ public class ThemePark {
 			
 			//People change destinations (AI)
 			for(Person p: thePark.peopleInPark){
-				p.doesActivity(p.chooseActivity());
+				for(int i = 1; i < 5; i++){
+					p.doesActivity(p.chooseActivity());					
+				}
 			}
 		}		
 	};

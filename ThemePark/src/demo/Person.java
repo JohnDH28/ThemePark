@@ -42,24 +42,17 @@ public class Person implements PersonInterface {
     
     public void doesActivity(int destIndex){
     	int dest = 0;
-    	int type = 0;
-    	for(int i = 0; i < park.allDestinations.size(); i++){
-    		if(park.allDestinations.get(i) instanceof Ride && destIndex == 0){
-    			dest = i; 
-    			type = 0;
-    		}
-    		if(park.allDestinations.get(i) instanceof Lavatory && destIndex == 1){
-    			dest = i;
-    			type = 1;
-    		}
-    		if(park.allDestinations.get(i) instanceof Vendor && destIndex == 2){
-    			dest = i;
-    			type = 2;
-    		}
-    		if(park.allDestinations.get(i) instanceof Kiosk && destIndex == 3){
-    			dest = i;
-    			type = 3;
-    		}
+    	if(destIndex == 0){
+    		dest = (int)(Math.random() * park.getNumOfRides());
+    	}
+    	if(destIndex == 1){
+    		dest = (int)(Math.random() * (park.getNumOfLavatories()) + park.getNumOfRides());
+    	}
+    	if(destIndex == 2){
+    		dest = (int)(Math.random() * (park.getNumOfVendors()) + park.getNumOfRides() + park.getNumOfLavatories());
+    	}
+    	if(destIndex == 3){
+    		dest = (int)(Math.random() * (park.getNumOfKiosks()) + park.getNumOfRides() + park.getNumOfLavatories() + park.getNumOfVendors());
     	}
         this.currLocation = dest;
         park.getAllDestinations().get(dest).setMaxPoints(park.getAllDestinations().get(dest).getMaxPoints() + park.getAllDestinations().get(dest).getCost());
@@ -68,30 +61,10 @@ public class Person implements PersonInterface {
         peopleAtDest.add(this);
         park.getAllDestinations().get(dest).setPeopleAttending(peopleAtDest);
         int[] incrementor = park.getAllDestinations().get(dest).arrayOfIcrementors();
-        if(type == 0){
-        	excitement += incrementor[0];
-        	fatigue += incrementor[1];
-        	needToDefecate += incrementor[2];  
-        	hunger += incrementor[3];  
-        }
-        if(type == 1){
-        	excitement += incrementor[0];
-        	fatigue += incrementor[1];
-        	needToDefecate += incrementor[2];  
-        	hunger += incrementor[3];  
-        }
-        if(type == 2){
-        	excitement += incrementor[0];
-        	fatigue += incrementor[1];
-        	needToDefecate += incrementor[2];    
-        	hunger += incrementor[3];  
-        }
-        if(type == 3){
-        	excitement += incrementor[0];
-        	fatigue += incrementor[1];
-        	needToDefecate += incrementor[2];  
-        	hunger += incrementor[3];  
-        }
+        excitement += incrementor[0];
+        fatigue += incrementor[1];
+        needToDefecate += incrementor[2];  
+        hunger += incrementor[3];  
         if(excitement > 10) excitement = 10;
         if(excitement < 0) excitement = 0;
         if(fatigue > 10) fatigue = 10;

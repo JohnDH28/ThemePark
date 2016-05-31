@@ -105,19 +105,19 @@ public class ThemePark {
 	public void generateAllDestinations(){
 		//EFDH
 		for(int i=0;i<numOfRides;i++){
-			int[] x = {4,4,-1,2};
+			int[] x = {6,4,-1,2};
 			allDestinations.add(new Ride(500, 10*priceCoef, true, x));
 		}
 		for(int i=0;i<numOfLavatories;i++){
-			int[] x= {-1,0,-4,2};
+			int[] x= {-1,1,-4,1};
 			allDestinations.add(new Lavatory(600, 0, true, x));
 		}
 		for(int i=0;i<numOfVendors;i++){
-			int[] x= {0,-5,5,-5};
+			int[] x= {0,-5,5,-7};
 			allDestinations.add(new Vendor(500, 5*priceCoef, true, x));
 		}
 		for(int i=0;i<numOfKiosks;i++){
-			int[] x = {-3,-1,1,1};
+			int[] x = {-2,-1,1,1};
 			allDestinations.add(new Kiosk(1000, 0, true, 100,x));
 		}
 	}

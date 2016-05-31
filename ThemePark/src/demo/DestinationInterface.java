@@ -6,6 +6,6 @@ public interface DestinationInterface {
 	int getCost();
 	boolean isOpen();
 	ArrayList<Person> getPeopleAttending();
-	int getEfficiency();	
+	double getEfficiency();	
 	int[] arrayOfIcrementors();
 }

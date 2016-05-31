@@ -2,7 +2,7 @@ package demo;
 
 import java.util.ArrayList;
 
-public class Destination {
+public class Destination implements DestinationInterface{
 	private int maxPoints;
 	private int cost;
 	private boolean isOpen;
@@ -62,9 +62,18 @@ public class Destination {
 		this.efficiency = i;
 	}
 
-	public double getEffic() {
+
+
+	@Override
+	public double getEfficiency() {
 		// TODO Auto-generated method stub
 		return efficiency;
+	}
+
+	@Override
+	public int[] arrayOfIcrementors() {
+		// TODO Auto-generated method stub
+		return incrementors;
 	}
 
 }

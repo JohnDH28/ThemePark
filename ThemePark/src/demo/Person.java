@@ -24,7 +24,7 @@ public class Person implements PersonInterface {
         this.needToDefecate = (int)(Math.random() * 6 + 2);
         this.fatigue = (int)(Math.random() * 4);
         this.hunger = (int)(Math.random() * 6 + 2);
-        this.happiness = (int)((fatigue + needToDefecate + excitement) / 3);
+        this.happiness = (int)((fatigue + needToDefecate + excitement + hunger) / 4);
         this.currLocation = currLocation;
     }
     
@@ -39,7 +39,14 @@ public class Person implements PersonInterface {
         return dest;
     }
     
-    public void doesActivity(int dest){
+    public void doesActivity(int destIndex){
+    	int dest = 0;
+    	for(int i = 0; i < park.allDestinations.size(); i++){
+    		if(park.allDestinations.get(i) instanceof Ride && destIndex == 0) dest = i;
+    		if(park.allDestinations.get(i) instanceof Lavatory && destIndex == 1) dest = i;
+    		if(park.allDestinations.get(i) instanceof Vendor && destIndex == 2) dest = i;
+    		if(park.allDestinations.get(i) instanceof Kiosk && destIndex == 3) dest = i;
+    	}
         this.currLocation = park.getAllDestinations().get(dest);
         park.getAllDestinations().get(dest).setMaxPoints(park.getAllDestinations().get(dest).getMaxPoints() + park.getAllDestinations().get(dest).getCost());
         this.points -= park.getAllDestinations().get(dest).getCost();

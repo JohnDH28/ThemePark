@@ -55,7 +55,7 @@ public class ThemePark {
 	 */
 	
 	public void generatePeople() {
-		for(int p = 1; p < numPeople; p++){
+		for(int p = 0; p < numPeople; p++){
 			peopleInPark.add(new Person(this));
 		}
 	}

@@ -2,7 +2,7 @@ package demo;
 
 public interface PersonInterface {
 	int chooseActivity();
-	void doesActivity(Destination dest);
+	void doesActivity(int dest);
 	int getExceitement();
 	int getFatigue();
 	int getDefecation();

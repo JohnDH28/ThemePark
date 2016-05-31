@@ -7,4 +7,5 @@ public interface DestinationInterface {
 	boolean isOpen();
 	ArrayList<Person> getPeopleAttending();
 	int getEfficiency();	
+	int[] arrayOfIcrementors();
 }

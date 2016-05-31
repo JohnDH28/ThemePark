@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Person implements PersonInterface {
+	private ThemePark park;
     private int points;
     private int height;
     private boolean isAdult;
@@ -14,8 +15,9 @@ public class Person implements PersonInterface {
     private Destination currLocation;
     private static Random rnd = new Random();
     
-    public Person(int height, boolean isAdult, int excitement, int needToDefecate, int fatigue, int happiness, Destination currLocation){
-        this.points = ThemePark.getPersonStartPoints();
+    public Person(ThemePark park, int height, boolean isAdult, int excitement, int needToDefecate, int fatigue, int happiness, Destination currLocation){
+        this.park = park;
+    	this.points = ThemePark.getPersonStartPoints();
         this.height = (int)(Math.random() * 37 + 42);
         this.isAdult = getRndBool();
         this.excitement = (int)(Math.random() * 4 + 2);
@@ -37,13 +39,26 @@ public class Person implements PersonInterface {
         return dest;
     }
     
-    public void doesActivity(Destination dest){
-        this.currLocation = dest;
-        dest.setMaxPoints(dest.getMaxPoints() - dest.getCost());
-        this.points -= dest.getCost();
-        ArrayList<Person> peopleAtDest = dest.getPeopleAttending();
+    public void doesActivity(int dest){
+        this.currLocation = park.getAllDestinations().get(dest);
+        park.getAllDestinations().get(dest).setMaxPoints(park.getAllDestinations().get(dest).getMaxPoints() + park.getAllDestinations().get(dest).getCost());
+        this.points -= park.getAllDestinations().get(dest).getCost();
+        ArrayList<Person> peopleAtDest = park.getAllDestinations().get(dest).getPeopleAttending();
         peopleAtDest.add(this);
-        dest.setPeopleAttending(peopleAtDest);
+        park.getAllDestinations().get(dest).setPeopleAttending(peopleAtDest);
+        if(dest == 0){
+        	
+        }
+        if(dest == 1){
+        	
+        }
+        if(dest == 2){
+        	needToDefecate += park.getAllDestinations().get(dest).getDefecationIncrementer();
+        	
+        }
+        if(dest == 3){
+        	
+        }
     }
     
     public static boolean getRndBool(){

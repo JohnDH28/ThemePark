@@ -146,10 +146,10 @@ public class ThemePark {
 				killDestination("ride");
 			}
 			if(tFat<x/4){
-				
+				killDestination("vendor");
 			}
 			if(tDef<x/4){
-				
+				killDestination("br");
 			}
 			
 			/*

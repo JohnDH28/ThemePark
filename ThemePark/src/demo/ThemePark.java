@@ -182,7 +182,7 @@ public class ThemePark {
 		}
 		double[] allEffic = new double[allDestinations.size()];
 		for(int x=0;x<allEffic.length;x++){
-			allEffic[x] = allDestinations.get(x).getEffic();
+			allEffic[x] = allDestinations.get(x).getEfficiency();
 		}
 		double low = allEffic[0];
 		int lowIndx = 0;

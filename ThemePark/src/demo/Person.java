@@ -77,7 +77,7 @@ public class Person implements PersonInterface {
         if(type == 1){
         	excitement += incrementor[0];
         	fatigue += incrementor[1];
-        	needToDefecate -= incrementor[2];  
+        	needToDefecate += incrementor[2];  
         	hunger += incrementor[3];  
         }
         if(type == 2){
@@ -89,7 +89,7 @@ public class Person implements PersonInterface {
         if(type == 3){
         	excitement += incrementor[0];
         	fatigue += incrementor[1];
-        	needToDefecate -= incrementor[2];  
+        	needToDefecate += incrementor[2];  
         	hunger += incrementor[3];  
         }
         if(excitement > 10) excitement = 10;
